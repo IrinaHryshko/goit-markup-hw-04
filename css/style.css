@@ -60,6 +60,7 @@ ul {
 
 .item-nav {
   margin-right: 50px;
+  position: relative;
 }
 .list {
   display: block;
@@ -87,6 +88,7 @@ ul {
 .base-logo {
   color: var(--sub-accent);
 }
+
 .nav {
   display: flex;
   align-items: center;
@@ -101,6 +103,36 @@ ul {
 }
 .active {
   color: var(--sub-accent);
+}
+.active::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 4px;
+  background-color: var(--sub-accent);
+  border-radius: 2px;
+  margin: 0;
+  padding: 0;
+}
+.list:hover,
+.list:focus {
+  color: var(--sub-accent);
+}
+.list:hover::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
+
+  width: 100%;
+  height: 4px;
+  background-color: var(--sub-accent);
 }
 
 /*адреса*/
@@ -137,10 +169,6 @@ ul {
   fill: var(--sub-accent);
 }
 
-.list:hover,
-.list:focus {
-  color: var(--sub-accent);
-}
 .icon-nav1 {
   padding: 0;
   margin-right: 10px;
@@ -552,6 +580,54 @@ ul {
   margin-bottom: 30px;
 
   background-color: var(--accent-color);
+}
+.overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+
+  background-color: rgba(33, 150, 243, 0.9);
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.examples-link:hover .overlay::before {
+  transform: translateY(0);
+  opacity: 1;
+}
+.overlay-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 63px 24px;
+  opacity: 0;
+}
+.overlay:hover .overlay-text:hover {
+  opacity: 1;
+}
+.overlay-text p {
+  padding: 0;
+  margin: 0;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--accent-color);
+}
+.overlay-img {
+  margin: 0;
+  padding: 0;
 }
 
 .border {
